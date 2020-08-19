@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'widgets.dart';
+import 'package:flutter/gestures.dart';
+import '../pages/checklist-page.dart';
+import '../pages/seismolist-page.dart';
 
 class QuakeBox extends StatelessWidget {
   final arrayDataLocations = [
@@ -64,14 +67,21 @@ class QuakeTitle extends StatelessWidget {
               textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 14)),
         ),
         Spacer(),
-        Text(
-          "View All >",
-          style: GoogleFonts.robotoMono(
-              textStyle: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 14,
-                  decoration: TextDecoration.underline,
-                  color: Colors.grey[600])),
+        RichText(
+          text: TextSpan(
+              text: "View All >",
+              style: GoogleFonts.robotoMono(
+                  textStyle: TextStyle(
+                      fontSize: 14,
+                      decoration: TextDecoration.underline,
+                      color: Colors.grey[600])),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Seismolist()),
+                  );
+                }),
         ),
       ],
     );
