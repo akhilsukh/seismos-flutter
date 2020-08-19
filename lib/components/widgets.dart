@@ -58,7 +58,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
 
 class Footnote extends StatelessWidget {
   final String text;
-  Footnote({Key, key, this.text});
+  Footnote({Key key, this.text});
 
   @override
   Widget build(BuildContext context) {
