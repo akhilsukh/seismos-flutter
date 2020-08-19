@@ -1,0 +1,102 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'widgets.dart';
+
+class QuakeBox extends StatelessWidget {
+  final arrayDataLocations = [
+    "San Diego",
+    "Albany",
+    "Tampa",
+    "Portland",
+    "Salt Lake City"
+  ];
+  final arrayDataMagnitudes = ["4.8", "6.2", "4.5", "5.1", "5.4"];
+  final String title;
+  QuakeBox({Key key, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          QuakeTitle(title: title),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(4)),
+            width: double.maxFinite,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Container(
+                margin: EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (int i = 0; i < arrayDataLocations.length; i++)
+                      QuakeEntries(
+                          location: arrayDataLocations[i],
+                          magnitude: arrayDataMagnitudes[i])
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class QuakeTitle extends StatelessWidget {
+  final String title;
+  QuakeTitle({Key key, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          title,
+          style: GoogleFonts.robotoMono(
+              textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 14)),
+        ),
+        Spacer(),
+        Text(
+          "View All >",
+          style: GoogleFonts.robotoMono(
+              textStyle: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  decoration: TextDecoration.underline,
+                  color: Colors.grey[600])),
+        ),
+      ],
+    );
+  }
+}
+
+class QuakeEntries extends StatelessWidget {
+  final String location;
+  final String magnitude;
+  QuakeEntries({Key key, this.location, this.magnitude});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          location,
+          style: GoogleFonts.robotoMono(textStyle: TextStyle()),
+        ),
+        Spacer(),
+        Text(
+          magnitude,
+          style: GoogleFonts.robotoMono(textStyle: TextStyle()),
+        ),
+      ],
+    );
+  }
+}
