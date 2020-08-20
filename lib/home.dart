@@ -5,7 +5,7 @@ import 'pages/checklist-page.dart';
 import 'pages/alerts-page.dart';
 import 'pages/prep-page.dart';
 import 'pages/map-page.dart';
-import 'components/quake-box.dart';
+import 'components/quake-widgets.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +47,7 @@ class Homepage extends StatelessWidget {
                   route: Preparatory(),
                 ),
                 new RoutedButton(
-                  title: "Earthquake Alerts",
+                  title: "Earthquake Alerts [BETA]",
                   route: Alerts(),
                 ),
               ],
