@@ -40,7 +40,11 @@ class Homepage extends StatelessWidget {
               children: [
                 QuakeBox(title: "Magnitude 4.5+"),
                 QuakeBox(title: "Magnitude 2.5+"),
-                MapButton(),
+                ImageButton(
+                  title: "Interactive Map",
+                  route: InteractiveMap(),
+                  image: new AssetImage('assets/map-background.png'),
+                ),
                 new RoutedButton(title: "Checklists", route: Checklists()),
                 new RoutedButton(
                   title: "Preparation Guide",
@@ -54,40 +58,5 @@ class Homepage extends StatelessWidget {
             ),
           ),
         ));
-  }
-}
-
-class MapButton extends StatelessWidget {
-  final mapBackground = new AssetImage('assets/map-background.png');
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
-        width: double.maxFinite,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: mapBackground, fit: BoxFit.cover),
-            borderRadius: BorderRadius.circular(4)),
-        child: OutlineButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => InteractiveMap()),
-            );
-          },
-          color: Colors.white,
-          borderSide: BorderSide(color: Colors.black),
-          highlightedBorderColor: Colors.black,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Text(
-            "Interactive Map",
-            style: GoogleFonts.robotoMono(textStyle: TextStyle(fontSize: 16)),
-          ),
-        ),
-      ),
-    );
   }
 }
