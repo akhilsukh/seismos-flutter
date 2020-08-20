@@ -24,7 +24,7 @@ class MapWidget extends StatefulWidget {
 
 class _MapWidgetState extends State<MapWidget> {
   GoogleMapController mapController;
-  final LatLng _center = const LatLng(37.317218, -122.045004);
+  final LatLng _center = const LatLng(37.3273, -122.04);
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -32,7 +32,7 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
           border: Border.all(color: Colors.black)),
@@ -42,7 +42,7 @@ class _MapWidgetState extends State<MapWidget> {
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(
               target: _center,
-              zoom: 11.0,
+              zoom: 8.0,
             )),
       ),
     );
