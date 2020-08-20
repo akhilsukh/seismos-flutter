@@ -5,6 +5,8 @@ import 'package:flutter/gestures.dart';
 import '../pages/checklist-page.dart';
 import '../pages/seismolist-page.dart';
 
+import '../quake-fetch.dart';
+
 class QuakeBox extends StatelessWidget {
   final arrayDataLocations = [
     "San Diego",
