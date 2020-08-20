@@ -74,3 +74,41 @@ class Footnote extends StatelessWidget {
     );
   }
 }
+
+class ImageButton extends StatelessWidget {
+  final Widget route;
+  final AssetImage image;
+  final String title;
+  ImageButton({this.route, this.image, this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+        width: double.maxFinite,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: image, fit: BoxFit.cover),
+            borderRadius: BorderRadius.circular(4)),
+        child: OutlineButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => null),
+            );
+          },
+          color: Colors.white,
+          borderSide: BorderSide(color: Colors.black),
+          highlightedBorderColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Text(
+            title,
+            style: GoogleFonts.robotoMono(textStyle: TextStyle(fontSize: 16)),
+          ),
+        ),
+      ),
+    );
+  }
+}
