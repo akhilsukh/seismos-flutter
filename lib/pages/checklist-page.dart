@@ -63,7 +63,7 @@ class CheckBox extends StatelessWidget {
             title,
             style: GoogleFonts.robotoMono(
                 textStyle:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    TextStyle(fontWeight: FontWeight.w500, fontSize: 14)),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
@@ -99,7 +99,7 @@ class CheckTitle extends StatelessWidget {
     return Text(
       title,
       style: GoogleFonts.robotoMono(
-          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
     );
   }
 }
