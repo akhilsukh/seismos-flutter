@@ -3,18 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
 import '../pages/seismolist-page.dart';
+import 'package:seismos_flutter/quake-fetch.dart';
+import 'package:seismos_flutter/quake.dart';
 
-class QuakeBox extends StatelessWidget {
-  final arrayDataLocations = [
-    "San Diego",
-    "Albany",
-    "Tampa",
-    "Portland",
-    "Salt Lake City"
-  ];
-  final arrayDataMagnitudes = ["4.8", "6.2", "4.5", "5.1", "5.4"];
+class QuakeBox extends StatefulWidget {
   final String title;
-  QuakeBox({Key key, this.title});
+  final String quakeUrl;
+  QuakeBox({this.title, this.quakeUrl});
+
+  @override
+  _QuakeBoxState createState() => _QuakeBoxState();
+}
+
+class _QuakeBoxState extends State<QuakeBox> {
+  List<Feature> _quake;
+
+  @override
+  void initState() {
+    super.initState();
+    QuakeFetch.getQuakes(widget.quakeUrl).then((value) {
+      setState(() {
+        _quake = value.features;
+      });
+    });
+  }
+
+  int getTrimmedLength() {
+    if (_quake.length > 4) {
+      return 4;
+    }
+    return _quake.length;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +42,7 @@ class QuakeBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          QuakeTitle(title: title),
+          QuakeTitle(title: widget.title),
           Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 0),
             decoration: BoxDecoration(
@@ -37,10 +56,10 @@ class QuakeBox extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (int i = 0; i < arrayDataLocations.length; i++)
+                    for (int i = 0; i < getTrimmedLength(); i++)
                       QuakeEntries(
-                          location: arrayDataLocations[i],
-                          magnitude: arrayDataMagnitudes[i])
+                          location: _quake[i].properties.place,
+                          magnitude: _quake[i].properties.mag.toString())
                   ],
                 ),
               ),
