@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:seismos_flutter/pages/prep-detail-page.dart';
 import '../components/widgets.dart';
 
 class Preparatory extends StatelessWidget {
@@ -13,19 +13,23 @@ class Preparatory extends StatelessWidget {
           children: [
             ImageButton(
               title: "General",
-              image: AssetImage('assets/map-background.png'),
+              image: AssetImage('assets/general/prep-general.png'),
+              route: PrepDetailGeneral(),
             ),
             ImageButton(
               title: "Before",
-              image: AssetImage('assets/map-background.png'),
+              image: AssetImage('assets/before/prep-before.png'),
+              route: PrepDetailBefore(),
             ),
             ImageButton(
               title: "During",
-              image: AssetImage('assets/map-background.png'),
+              image: AssetImage('assets/during/prep-during.png'),
+              route: PrepDetailDuring(),
             ),
             ImageButton(
               title: "After",
-              image: AssetImage('assets/map-background.png'),
+              image: AssetImage('assets/after/prep-after.png'),
+              route: PrepDetailAfter(),
             )
           ],
         ),
