@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/gestures.dart';
-import '../pages/checklist-page.dart';
 import '../pages/seismolist-page.dart';
-
-import '../quake-fetch.dart';
 
 class QuakeBox extends StatelessWidget {
   final arrayDataLocations = [
