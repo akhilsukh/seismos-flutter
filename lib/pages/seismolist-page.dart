@@ -13,11 +13,14 @@ class _SeismolistState extends State<Seismolist> {
   List<Feature> _quake;
   bool _loading;
 
+  final String quakeUrlAll =
+      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
+
   @override
   void initState() {
     super.initState();
     _loading = true;
-    QuakeFetch.getQuakes().then((value) {
+    QuakeFetch.getQuakes(quakeUrlAll).then((value) {
       setState(() {
         _quake = value.features;
         _loading = false;

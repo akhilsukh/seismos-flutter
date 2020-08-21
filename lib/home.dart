@@ -26,6 +26,11 @@ class MyApp extends StatelessWidget {
 }
 
 class Homepage extends StatelessWidget {
+  final String quakeUrlMajor =
+      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson";
+  final String quakeUrlMinor =
+      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,19 +42,25 @@ class Homepage extends StatelessWidget {
             margin: new EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Column(
               children: [
-                QuakeBox(title: "Magnitude 4.5+"),
-                QuakeBox(title: "Magnitude 2.5+"),
+                QuakeBox(
+                  title: "Magnitude 4.5+",
+                  quakeUrl: quakeUrlMajor,
+                ),
+                QuakeBox(
+                  title: "Magnitude 2.5+",
+                  quakeUrl: quakeUrlMinor,
+                ),
                 ImageButton(
                   title: "Interactive Map",
                   route: InteractiveMap(),
                   image: new AssetImage('assets/map-background.png'),
                 ),
-                new RoutedButton(title: "Checklists", route: Checklists()),
-                new RoutedButton(
+                RoutedButton(title: "Checklists", route: Checklists()),
+                RoutedButton(
                   title: "Preparation Guide",
                   route: Preparatory(),
                 ),
-                new RoutedButton(
+                RoutedButton(
                   title: "Earthquake Alerts [BETA]",
                   route: Alerts(),
                 ),
