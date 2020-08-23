@@ -28,13 +28,6 @@ class _QuakeBoxState extends State<QuakeBox> {
     });
   }
 
-  int getTrimmedLength() {
-    if (_quake.length > 4) {
-      return 4;
-    }
-    return _quake.length;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,7 +49,7 @@ class _QuakeBoxState extends State<QuakeBox> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for (int i = 0; i < getTrimmedLength(); i++)
+                    for (int i = 0; i < 4; i++)
                       QuakeEntries(
                           location: _quake[i].properties.place,
                           magnitude: _quake[i].properties.mag.toString())
