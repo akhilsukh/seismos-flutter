@@ -14,7 +14,7 @@ class _SeismolistState extends State<Seismolist> {
   bool _loading;
 
   final String quakeUrlAll =
-      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
+      "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=2.5&limit=25";
 
   @override
   void initState() {

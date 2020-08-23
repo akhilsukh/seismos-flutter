@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
 
 class Homepage extends StatelessWidget {
   final String quakeUrlMajor =
-      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson";
+      "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=4.5&limit=4";
   final String quakeUrlMinor =
-      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson";
+      "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=2.5&maxmagnitude=4.49&limit=4";
 
   @override
   Widget build(BuildContext context) {
