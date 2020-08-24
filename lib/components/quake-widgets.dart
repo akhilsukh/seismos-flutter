@@ -17,6 +17,9 @@ class QuakeBox extends StatefulWidget {
 
 class _QuakeBoxState extends State<QuakeBox> {
   List<Feature> _quake;
+  Widget _subCol = LinearProgressIndicator(
+      backgroundColor: Colors.grey[500],
+      valueColor: new AlwaysStoppedAnimation<Color>(Colors.grey[800]));
 
   @override
   void initState() {
@@ -24,6 +27,12 @@ class _QuakeBoxState extends State<QuakeBox> {
     QuakeFetch.getQuakes(widget.quakeUrl).then((value) {
       setState(() {
         _quake = value.features;
+        _subCol = Column(children: [
+          for (int i = 0; i < 4; i++)
+            QuakeEntries(
+                location: _quake[i].properties.place,
+                magnitude: _quake[i].properties.mag.toString())
+        ]);
       });
     });
   }
@@ -48,12 +57,7 @@ class _QuakeBoxState extends State<QuakeBox> {
                 margin: EdgeInsets.all(8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    for (int i = 0; i < 4; i++)
-                      QuakeEntries(
-                          location: _quake[i].properties.place,
-                          magnitude: _quake[i].properties.mag.toString())
-                  ],
+                  children: [_subCol],
                 ),
               ),
             ),

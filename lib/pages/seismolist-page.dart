@@ -11,7 +11,11 @@ class Seismolist extends StatefulWidget {
 
 class _SeismolistState extends State<Seismolist> {
   List<Feature> _quake;
-  bool _loading;
+  Widget _subCol = Container(
+      alignment: Alignment.center,
+      child: CircularProgressIndicator(
+          backgroundColor: Colors.grey[500],
+          valueColor: new AlwaysStoppedAnimation<Color>(Colors.grey[800])));
 
   final String quakeUrlAll =
       "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=2.5&limit=25";
@@ -19,11 +23,18 @@ class _SeismolistState extends State<Seismolist> {
   @override
   void initState() {
     super.initState();
-    _loading = true;
     QuakeFetch.getQuakes(quakeUrlAll).then((value) {
       setState(() {
         _quake = value.features;
-        _loading = false;
+        _subCol = ListView.builder(
+            itemCount: null == _quake ? 0 : _quake.length,
+            itemBuilder: (context, index) {
+              Feature feature = _quake[index];
+              return ListTile(
+                title: Text(feature.properties.place),
+                subtitle: Text("Mag - " + feature.properties.mag.toString()),
+              );
+            });
       });
     });
   }
@@ -33,15 +44,7 @@ class _SeismolistState extends State<Seismolist> {
     return Scaffold(
       appBar: Header(title: "Seismolist"),
       body: Container(
-        child: ListView.builder(
-            itemCount: null == _quake ? 0 : _quake.length,
-            itemBuilder: (context, index) {
-              Feature feature = _quake[index];
-              return ListTile(
-                title: Text(feature.properties.place),
-                subtitle: Text("Mag - " + feature.properties.mag.toString()),
-              );
-            }),
+        child: _subCol,
       ),
     );
   }
