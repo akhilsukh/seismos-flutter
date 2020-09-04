@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.akhilsukh01.seismos_flutter"
-    android:versionCode="0.0"
-    android:versionName="0.0">
+    package="com.akhilsukh01.seismos"
+    android:versionCode="0.00"
+    android:versionName="Initial Beta Release">
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide
